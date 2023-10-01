@@ -26,15 +26,5 @@ ENV DOTNET_USE_POLLING_FILE_WATCHER 1
 WORKDIR /src
 COPY src/ .
 RUN dotnet restore
-# RUN dotnet publish -c Debug -o out api.csproj
-# EXPOSE 5000/tcp
-# ENV ASPNETCORE_URLS=http://*:5000
-ENTRYPOINT ["dotnet", "watch", "run", "--urls=http://0.0.0.0:5000"]
-# ENTRYPOINT ["dotnet", "watch", "run", "--urls=http://0.0.0.0:5000"]
-# ENTRYPOINT ["dotnet", "watch", "run", "--server.urls", "http://0.0.0.0:5000", "--urls=http://0.0.0.0:5000"]
 
-# FROM mcr.microsoft.com/dotnet/aspnet:7.0-alpine
-# WORKDIR /app
-# COPY --from=base /src/out .
-# EXPOSE 5000
-# ENTRYPOINT ["dotnet", "api.dll"]
+ENTRYPOINT ["dotnet", "watch", "run", "--urls=http://0.0.0.0:5000"]

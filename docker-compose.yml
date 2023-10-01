@@ -37,11 +37,8 @@ services:
       - ./api:/src
     ports:
       - 6002:5000
-    # environment:
-    #   - ASPNETCORE_URLS=http://0.0.0.0:5000
     networks:
       - network
-    # command: dotnet watch run --no-restore
 
 networks:
   network:
