@@ -1,0 +1,133 @@
+@use '@/assets/styles/colors' as *
+
+@font-face
+  font-family: 'Exo2'
+  font-weight: normal
+  font-style: normal
+  font-display: auto
+  unicode-range: U+000-5FF
+  src: local('Exo2'), url('/fonts/Exo2/Exo2-Regular.woff2') format('woff2'), url('/fonts/Exo2/Exo2-Regular.woff') format('woff')
+@font-face
+  font-family: 'Exo2-bold'
+  font-weight: bold
+  font-style: normal
+  font-display: auto
+  unicode-range: U+000-5FF
+  src: local('Exo2'), url('/fonts/Exo2/Exo2-Bold.woff2') format('woff2'), url('/fonts/Exo2/Exo2-Bold.woff') format('woff')
+
+$font-size-title: 3rem
+$font-size-base: 1.6rem
+$font-size-small: 1.3rem
+$font-size-base-button: 1.4rem
+$padding-bottom: .048rem
+
+@mixin font-title-bold($padding-vertical: 0, $padding-horizontal: 0)
+  $padding-bottom: $padding-vertical + ($padding-bottom * (calc($font-size-title / $font-size-base * 2)))
+  font-family: Exo2-bold
+  min-height: $font-size-title
+  font-size: $font-size-title
+  line-height: $font-size-title + (calc($font-size-title / 6)) - $padding-bottom * 2
+  color: $t-base
+  // word-break: normal
+  padding-top: $padding-vertical
+  padding-bottom: $padding-vertical + $padding-bottom * 2
+  padding-left: $padding-horizontal
+  padding-right: $padding-horizontal
+  box-sizing: border-box
+
+@mixin font-title($padding-vertical: 0, $padding-horizontal: 0)
+  @include font-title-bold($padding-vertical: 0, $padding-horizontal: 0)
+  font-family: Exo2
+  font-weight: lighter
+  letter-spacing: calc($font-size-title / 100)
+
+@mixin font-base($padding-vertical: 0, $padding-horizontal: 0)
+  font-family: Exo2
+  min-height: $font-size-base
+  font-size: $font-size-base
+  letter-spacing: calc($font-size-base / 100)
+  line-height: $font-size-base - $padding-bottom * 2
+  color: $t-base
+  // word-break: normal
+  padding-top: $padding-vertical
+  padding-bottom: $padding-vertical + $padding-bottom * 2
+  padding-left: $padding-horizontal
+  padding-right: $padding-horizontal
+
+@mixin font-base-bold($padding-vertical: 0, $padding-horizontal: 0)
+  font-family: Exo2-bold
+  min-height: $font-size-base
+  font-size: $font-size-base
+  line-height: $font-size-base - $padding-bottom
+  color: $t-base
+  // word-break: normal
+  padding-top: $padding-vertical
+  padding-bottom: $padding-vertical + $padding-bottom
+  padding-left: $padding-horizontal
+  padding-right: $padding-horizontal
+
+@mixin font-base-button($padding-vertical: 0, $padding-horizontal: 0)
+  font-family: Exo2-bold
+  min-height: $font-size-base-button
+  font-size: $font-size-base-button
+  line-height: $font-size-base - $padding-bottom
+  color: $t-base
+  // word-break: normal
+  white-space: nowrap
+  padding-top: $padding-vertical
+  padding-bottom: $padding-vertical + $padding-bottom
+  padding-left: $padding-horizontal
+  padding-right: $padding-horizontal
+
+@mixin font-small($padding-vertical: 0, $padding-horizontal: 0)
+  font-family: Exo2
+  min-height: $font-size-small
+  font-size: $font-size-small
+  line-height: $font-size-small - $padding-bottom * 2
+  color: $t-base
+  // word-break: normal
+  padding-top: $padding-vertical
+  padding-bottom: $padding-vertical + $padding-bottom * 2
+  padding-left: $padding-horizontal
+  padding-right: $padding-horizontal
+
+h1
+  @include font-title
+  display: inline-block
+  color: $t-base
+  margin: 0
+  // overflow: hidden
+  text-overflow: ellipsis
+  // white-space: nowrap
+  user-select: none
+h2
+  @include font-title
+  display: inline-block
+  color: $t-base
+  margin: 0
+  // overflow: hidden
+  text-overflow: ellipsis
+  // white-space: nowrap
+h3
+  @include font-base
+  display: inline-block
+  color: $t-base
+  margin: 0
+  text-overflow: ellipsis
+  // white-space: nowrap
+  // overflow: hidden
+  // word-wrap: anywhere
+  // overflow-wrap: anywhere
+  // word-break: break-all
+
+// .text-title
+//   @include font-title-bold
+//     color: $t-base
+//     &-active
+//       color: $t-active
+
+// .text-base
+//   @include font-base
+//     color: $t-base
+//     &-active
+//       color: $t-active

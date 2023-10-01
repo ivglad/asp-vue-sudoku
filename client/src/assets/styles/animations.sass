@@ -1,0 +1,33 @@
+@use '@/assets/styles/fonts' as *
+@use '@/assets/styles/common' as *
+
+
+@mixin transition-leave($property: all, $duration: 0.15s, $timing-function: ease-in, $delay: 0.0s)
+  transition: $property $duration $timing-function $delay
+
+@mixin transition-enter($property: all, $duration: 0.1s, $timing-function: ease-out, $delay: 0.0s)
+  @include transition-leave($property, $duration, $timing-function, $delay)
+
+.group-fade-item
+  @include transition-leave
+.group-fade-enter-from,
+.group-fade-leave-to
+  opacity: 0
+  transform: translateY(1rem)
+.group-fade-leave-active
+  position: absolute !important
+  opacity: 0
+  transform: translateY(1rem)
+.group-fade-move
+  @include transition-leave
+
+.list-fade-enter-active
+  @include transition-enter
+.list-fade-leave-active
+  @include transition-leave
+.list-fade-enter-from
+  opacity: 0
+  transform: translateY(-$xs-offset)
+.list-fade-leave-to
+  opacity: 0
+  transform: translateY(calc($xs-offset / -1.5))

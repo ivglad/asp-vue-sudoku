@@ -1,0 +1,48 @@
+version: '3.9'
+
+services:
+  nginx:
+    build:
+      context: services/nginx
+      dockerfile: Dockerfile
+    container_name: asp-vue-nginx
+    restart: always
+    volumes:
+      - ./:/var/www
+      - ./services/nginx/logs:/var/log/nginx
+    ports:
+      - 6001:80
+    networks:
+      - network
+
+  client:
+    build:
+      context: services/client
+      dockerfile: Dockerfile
+    container_name: asp-vue-client
+    restart: always
+    volumes:
+      - ./client:/var/www/client
+      - /var/www/client/node_modules
+    networks:
+      - network
+
+  api:
+    build: 
+      context: services/api
+      dockerfile: Dockerfile
+    container_name: asp-vue-api
+    restart: always
+    volumes:
+      - ./api:/src
+    ports:
+      - 6002:5000
+    # environment:
+    #   - ASPNETCORE_URLS=http://0.0.0.0:5000
+    networks:
+      - network
+    # command: dotnet watch run --no-restore
+
+networks:
+  network:
+    driver: bridge
