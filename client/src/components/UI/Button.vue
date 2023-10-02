@@ -1,5 +1,5 @@
 <script setup>
-import { ref, reactive, computed, watch } from "vue"
+import { ref, reactive, computed, watch, defineEmits } from "vue"
 
 const props = defineProps({
   bType: {
@@ -23,7 +23,7 @@ const props = defineProps({
   }
 })
 
-const mouseDown = ref(false);
+const mouseDown = ref(false)
 
 const classes = computed(() => {
   return {
@@ -38,6 +38,10 @@ const mainHandler = (e) => {
   if (!props.bActive) {
     e.stopImmediatePropagation();
   }
+}
+
+const resetFileInput = (e) => {
+  e.target.value = null
 }
 
 </script>
@@ -58,7 +62,8 @@ const mainHandler = (e) => {
            class="select-file">
       <input type="file"
              name="file"
-             id="file-input">
+             id="file-input"
+             @click="resetFileInput">
       <div class="button"
            :class="classes"
            @click="mainHandler"

@@ -76,7 +76,7 @@ const uploadFile = async () => {
     error.value = ""
   } catch(e) {
     error.value = `Ошибка при отправке файла`
-    console.log(`ERROR > Ошибка при отправке файла: ${e.message}`)
+    console.log(`ERROR. Ошибка при отправке файла: ${e.message}`)
   }
 }
 
@@ -94,7 +94,7 @@ const showFileGrid = async () => {
     error.value = ""
   } catch(e) {
     error.value = `Ошибка получения данных файла`
-    console.log(`ERROR > Ошибка получения данных файла: ${e.message}`)
+    console.log(`ERROR. Ошибка получения данных файла: ${e.message}`)
   }
 }
 
@@ -112,14 +112,14 @@ const sudokuHandle = async () => {
     checkNullCells()
   } catch(e) {
     error.value = `Ошибка обработки файла`
-    console.log(`ERROR > Ошибка обработки файла: ${e.message}`)
+    console.log(`ERROR. Ошибка обработки файла: ${e.message}`)
   }
 }
 
 const checkNullCells = () => {
   const nullCellsTriger = cells.value.some((cell) => {
     if (cell.number === "*") {
-      error.value = `Нет решения для данной итерации судоку`
+      error.value = `Нет решения для данной комбинации судоку`
       return true
     }
   })
