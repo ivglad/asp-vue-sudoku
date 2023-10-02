@@ -35,8 +35,6 @@ services:
     restart: always
     volumes:
       - ./api:/src
-    ports:
-      - 6002:5000
     networks:
       - network
 
